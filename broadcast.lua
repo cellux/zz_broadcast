@@ -64,7 +64,7 @@ local function listener()
       nn.bind(event_pub, event_address)
       -- poll the listener socket for incoming events
       net.qpoll(s.fd, function()
-         local msg, peer_addr = s:recvfrom()
+         local msg, peer_addr = s:recv()
          local sender_address = peer_addr.address
          local sender_port = peer_addr.port
          local unpacked = msgpack.unpack(msg)
